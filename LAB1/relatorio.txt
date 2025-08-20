@@ -1,0 +1,23 @@
+Exercício 1 – ex1.c
+
+a) Porque o diretório atual '.' não está no PATH do Linux. 
+Então, quando digitamos apenas ex1, o sistema não sabe onde procurar o executável. 
+Pra rodar, precisamos indicar o caminho corretamente
+
+Exercício 2 – ex2.c
+
+c) O programa rodou, mas deu resultado errado porque tiramos o cabeçalho da função. 
+Sem ele, o compilador não sabe como usar a função corretamente.
+
+Exercício 4 – ex4.c
+
+c1 = ocupa 1 byte, valor 1
+
+c2 = ocupa 1 byte, valor ASCII 49
+
+i = ocupa vários bytes (geralmente 4), valor 1 distribuído
+
+v = array de chars com terminador nulo \0
+
+Logo, diferentes tipos de variáveis usam quantidade de bytes diferente na memória, 
+e strings são armazenadas como arrays de bytes terminados por \0.
