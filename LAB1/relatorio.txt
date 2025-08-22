@@ -1,23 +1,33 @@
-Exercício 1 – ex1.c
+Relatório 1
 
-a) Porque o diretório atual '.' não está no PATH do Linux. 
-Então, quando digitamos apenas ex1, o sistema não sabe onde procurar o executável. 
-Pra rodar, precisamos indicar o caminho corretamente
+Objetivo: Aprender a compilar programas no Linux usando gcc e ver como diferentes tipos de variáveis são armazenados na memória.
 
-Exercício 2 – ex2.c
+Exercício 1 – ex1.c 
 
-c) O programa rodou, mas deu resultado errado porque tiramos o cabeçalho da função. 
-Sem ele, o compilador não sabe como usar a função corretamente.
+Pergunta: Por que seu programa não foi encontrado?
 
-Exercício 4 – ex4.c
+R: Porque o terminal não procura automaticamente o programa na pasta atual. Quando digitei só ex1, ele não encontrou. 
+Para rodar, precisa usar ./ex1, que indica “rode apartir daqui”
 
-c1 = ocupa 1 byte, valor 1
+Exercício 2 – ex2.c 
 
-c2 = ocupa 1 byte, valor ASCII 49
+Pergunta: O que aconteceu? O que mudou?
 
-i = ocupa vários bytes (geralmente 4), valor 1 distribuído
+R: O programa rodou normalmente. Nesse caso, a função foo estava declarada no cabeçalho só em outro arquivo,
+então o compilador sabia como usar a função corretamente
 
-v = array de chars com terminador nulo \0
+Exercício 3 – ex3.c 
 
-Logo, diferentes tipos de variáveis usam quantidade de bytes diferente na memória, 
-e strings são armazenadas como arrays de bytes terminados por \0.
+Pergunta: O que aconteceu? O que mudou?
+R: Quando compilei sem o cabeçalho da função foo, o compilador mostrou warnings e o resultado do programa saiu errado.
+Isso porque o compilador não tinha informação suficiente sobre a função.
+
+Exercício 4 – ex4.c 
+
+Pergunta: O que você pode concluir sobre o armazenamento das variáveis c e i, e do vetor v?
+
+R: Cada variável ocupa um espaço diferente na memória.
+c1 - ocupa 1 byte
+c2 - ocupa 1 byte (valor ASCII de '1')
+i - ocupa vários bytes (normalmente 4)
+v - array de char (string), ocupa vários bytes seguidos e termina com \0
