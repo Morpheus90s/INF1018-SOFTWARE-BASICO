@@ -1,0 +1,57 @@
+Relatório 2
+
+Objetivo: Representação de Dados: inteiros sem sinal
+
+ex1: 
+
+Criei o arquivo ex1.c com a função dump e o main, compilei no terminal
+O programa mostrou que o int ocupa 4 bytes. 
+Os bytes aparecem em ordem invertida porque a arquitetura do computador usa little endian,
+Testei com outros valores para i e vi que os bytes mudam, mas sempre ocupam 4 posições 
+
+ex2:
+
+Troquei a variável int i por long l e rodei o programa. 
+O resultado mostrou que o long ocupa 8 bytes na minha máquina,
+A ordem também ficou invertida
+
+ex3: 
+
+Troquei a variável por short s. O programa mostrou que o short ocupa 2 bytes. 
+Também segue a ordem little endian
+
+ex4:
+
+Testei com: char c = 'a', e também com: char c = 97
+Nos dois casos o resultado foi o mesmo, porque 'a' tem código ASCII 97. 
+O char ocupa apenas 1 byte
+
+ex5:
+
+Usei o exemplo: char p[] = "7509" e rodei o dump. 
+O programa mostrou os códigos ASCII de '7', '5', '0', '9' e, no final, o caractere \0.
+Depois modifiquei para testar os caracteres:'A' - código 65, ' ' (espaco) - código 32, '\n' - código 10, '$' - código 36
+
+ex6: 
+
+Compilei e executei o programa com a função string2num. 
+O resultado foi: ==> 1234 ==> 1235 ==> 1235 
+A função vai percorrendo a string e transformando cada caractere em número pega o valor inteiro do dígito, 
+A variável a acumula o número, sempre multiplicando por 10 e somando o próximo dígito.
+
+ex7:
+
+Adaptei a função para receber a base como segundo parâmetro. Testei com:
+
+printf("%d\n", string2num("777", 8));
+printf("%d\n", string2num("777", 10));
+
+Saida :"777" em base 8 -> 511"777" em base 10 -> 777
+
+ex8:  
+
+Modifiquei novamente para aceitar letras como dígitos (a=10, b=11, …, z=35).
+
+Testes:"1a" em base 16 -> 26"a09b" em base 16 -> 41115"z09b" em base 36 -> 16779567
+A maior base possível com esse esquema é 36
+
