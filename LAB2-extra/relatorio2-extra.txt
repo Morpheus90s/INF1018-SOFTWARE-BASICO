@@ -1,0 +1,14 @@
+Relatório Lab2 Extra 
+
+Objetivo: Ver sobre little-endian e big-endian e conversão de números para strings em diferentes bases
+
+ex1-extra: 
+
+Criei a função is_little() que retorna 1 se a memória for little-endian e 0 caso contrário 
+Para testar, coloquei um inteiro 13 e analisei o primeiro byte dele,
+O computador que usei organiza os bytes em little-endian.
+
+
+ex2-extra:
+Implementei a função num2string para converter um número inteiro para uma string na base indicada,
+A função converteu corretamente o número para as diferentes bases indicadas, mostrando como representar números em strings.
