@@ -1,0 +1,23 @@
+Relatório – Operações Bit a Bit
+
+ex1
+
+Fiz uma operação para obter o byte menos significativo de x e deixar os outros bits zerados.
+
+Fiz outra operação para colocar todos os bits do byte mais significativo como 1 e manter os outros bytes iguais a x.
+
+ex2
+
+Criei a função odd_ones para verificar se o número de bits 1 de um inteiro é ímpar.
+
+Testei com 0x01010101 e 0x01030101 para conferir o resultado.
+
+ex3
+
+Criei a função switch_byte para trocar as metades de um byte.
+
+Testei com o valor 0xAB.
+
+Criei a função rotate_left para deslocar bits circularmente à esquerda.
+
+Testei deslocando 1, 2 e 7 bits em 0x61.
