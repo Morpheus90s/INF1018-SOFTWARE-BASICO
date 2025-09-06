@@ -1,0 +1,16 @@
+Relatório – Arduino Bit a Bit
+
+No ex1:
+
+Implementei um contador circular de 0 a 15. A cada loop, o valor era deslocado 2 bits à esquerda para acender
+os LEDs conectados nas portas 2 a 5. Assim, cada LED representava um bit do número em binário.
+
+No ex2: 
+Realizei a leitura dos botões conectados nos pinos 8 a 11.
+O estado desses botões foi deslocado para as saídas 2 a 5,
+fazendo com que cada botão acendesse diretamente o LED correspondente.
+
+No ex3:
+Modifiquei o programa para que cada botão alterasse o estado do LED correspondente
+a cada vez que fosse pressionado. Para isso, detectei a transição do botão de “solto” para “pressionado”
+e utilizei a operação XOR para alternar o bit do LED.
