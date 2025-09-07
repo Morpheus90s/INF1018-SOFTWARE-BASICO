@@ -1,0 +1,40 @@
+Relatório – Inteiros com e sem Sinal
+
+ex1: 
+
+Fiz as contas de char c = 150. Como char só ocupa 1 byte (8 bits), ele guarda de -128 a 127.
+Então 150 estoura e vira -106 em complemento de 2. No dump aparece 96.
+Fiz também para short s = -3. Como short tem 2 bytes, -3 em complemento de 2 fica FF FD,
+e em little endian aparece como fd ff.
+Depois calculei int i = -151. Como int tem 4 bytes, em complemento de 2 ele fica FF FF FF 69. 
+No dump aparece em ordem little endian: 69 ff ff ff.
+
+ex2:
+
+Fiz a conta de short l = -32765. Como o mínimo de um short é -32768, -32765 fica como 0x8003 em little endian: 03 80.
+Depois calculei unsigned short k = 32771. Esse número passa do limite de um signed short,
+mas como é unsigned, o mesmo padrão de bits (`03 80`) é interpretado como 32771.
+
+ex3:
+
+Implementei a função xbyte usando deslocamento e máscara para pegar o byte certo e depois fazer a extensão de sinal.
+Testei, por exemplo, ./ex3 11a032b5 0. O byte 0 é b5 (181 decimal).
+Como é um byte assinado, isso vira -75. O programa mostra ffffffb5  -75, confirmando que a extensão de sinal funcionou.
+
+ex4: 
+No ex4A, fiz o teste com int x = 0xffffffff. Esse valor é -1. Como -1 < 2, o resultado foi "sim".
+
+No ex4B, usei unsigned int x = 0xffffffff. Agora o valor é 4.294.967.295, que é maior que 2, então deu "não". 
+Quando troquei %d por %u, vi claramente que o número é grande positivo e não negativo.
+
+No ex4C, usei int x = 0xffffffff e unsigned int y = 2. Como na comparação o int vira unsigned,
+o -1 virou 4.294.967.295. Assim, o resultado foi que x > y.
+
+Aqui entendi que a comparação muda totalmente dependendo do tipo.
+
+ex5:
+
+Fiz o teste com signed char sc = -1. Em 8 bits, -1 é 0xFF. Quando passa para unsigned int,
+primeiro ele vira `int`, depois vira unsigned. O valor final fica 0x000000FF, que é 255.
+
+Quando printei com dump, realmente apareceu ff 00 00 00.
