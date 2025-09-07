@@ -35,6 +35,6 @@ Aqui entendi que a comparação muda totalmente dependendo do tipo.
 ex5:
 
 Fiz o teste com signed char sc = -1. Em 8 bits, -1 é 0xFF. Quando passa para unsigned int,
-primeiro ele vira `int`, depois vira unsigned. O valor final fica 0x000000FF, que é 255.
+primeiro ele vira int, depois vira unsigned. O valor final fica 0x000000FF, que é 255.
 
 Quando printei com dump, realmente apareceu ff 00 00 00.
