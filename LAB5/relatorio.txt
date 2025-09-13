@@ -1,0 +1,39 @@
+Relatório – Representação de Arrays e Structs
+
+Primeiro calculei o tamanho dos arrays.
+O int b[2] tem 2 inteiros de 4 bytes cada, então ocupa 8 bytes.
+Já o short a[2][3] tem 6 elementos de 2 bytes, total de 12 bytes.
+Na memória os arrays ficam em posições seguidas, e no caso do a[2][3],
+os elementos são guardados linha por linha.
+
+Depois rodei a main do enunciado e usei a função dump.
+Os números apareceram em ordem contígua e no formato little-endian (o byte menos significativo vem primeiro).
+Isso confirmou o que tinha pensado.
+
+A struct X tem três campos: int a, short b, int c.
+Coloquei valores fáceis de reconhecer (0xa1a2a3a4, 0xb1b2, 0xc1c2c3c4)
+e olhei no dump. O sizeof(X) deu 12 bytes.
+Existe um buraco de 2 bytes depois do short b,
+para que o próximo int (c) fique alinhado em múltiplo de 4.
+Esse buraco é o padding que o compilador coloca para respeitar o alinhamento da máquina.
+
+As outras structs:
+
+X1: tem um char, um int e outro char.
+Por causa do alinhamento do int, o compilador insere 3 bytes de espaço(pading)
+depois do primeiro char. O tamanho final fica maior que a soma, no total 12 bytes.
+X2: tem um long (8 bytes) e um char. O long precisa estar alinhado em 8,
+então o compilador coloca pading e o tamanho fecha em 16 bytes.
+X3: tem um int e dois char. São 6 bytes úteis,
+mas o compilador arredonda para múltiplo de 4, então fica 8 bytes.
+X4: tem uma struct X2 (16 bytes) e um char. Com o alinhamento, o total fecha em 24 bytes.
+X5: só três char. Não precisa de padding, então ocupa 3 bytes.
+X6: tem um short, um int, um vetor de char[3] e outro short. 
+Por causa do alinhamento entre os tipos, o compilador coloca padding e o tamanho final é 16 bytes.
+
+Por fim, as unions:
+U1: tem um int (4 bytes) e um char[5] (5 bytes).
+Como o maior campo é 5 e precisa de alinhamento de 4, o compilador arredonda e o total fica 8 bytes.
+
+U2: tem um short (2 bytes) e um char[5] (5 bytes).
+O maior campo é 5, mas como precisa de alinhamento de 2, o total fica 6 bytes.
