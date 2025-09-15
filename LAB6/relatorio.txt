@@ -1,0 +1,29 @@
+soma:
+
+Para somar todos os elementos, a primeira coisa que fiz foi declarar uma variável sum e inicializá-la com zero,
+usando o registrador %eax. Dentro do laço (L1), ao invés de apenas pegar o valor e imprimir,
+usei a instrução addl (%r12), %eax. Isso faz com que o valor do elemento atual do array seja
+somado ao valor que já está no registrador %eax, que é a nossa soma.
+O printf, que antes estava dentro do laço, foi movido para fora (L2),
+assim ele imprime o resultado total da soma apenas uma vez, depois que o laço termina.
+
+pares: 
+
+Traduzi o if ((*p % 2) == 0) para Assembly. Como não existe um operador de resto em Assembly,
+usei uma técnica com operações lógicas. Para saber se um número é par,
+basta verificar se o último bit dele é zero. Para fazer isso,
+usei a instrução testl $1, %eax, que faz um AND lógico com o número 1.
+Se o resultado for ímpar, o testl altera um flag no processador.
+Em seguida, usei a instrução jne L1_continua, que significa
+"pule se não for igual" ao zero, fazendo com que o programa pule a parte de imprimir
+e vá direto para a próxima iteração do laço. Dessa forma, só os números pares são impressos.
+
+bytes:
+
+Por último, modifiquei o tipo do array. No arquivo, troquei a diretiva .int por .byte,
+o que faz com que cada elemento do array ocupe apenas 1 byte na memória.
+Por causa disso, tive que mudar a forma como o ponteiro anda pelo array: 
+ao invés de pular de 4 em 4 bytes com addq $4, %r12, mudei para addq $1, %r12.
+Na parte do printf é esperado um número de 32 bits, e o que estávamos lendo era um de 8 bits.
+Para resolver isso, usei a instrução movsbl, que lê o byte do array e estende seu sinal para 32 bits
+antes de mover para o registrador %eax
