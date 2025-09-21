@@ -1,0 +1,21 @@
+Relatorio - Lab 7
+
+Questão 1
+O programa em C tinha um array de caracteres S2 e usava um while para imprimir todos os elementos com printf.
+Modifiquei o programa para que ele não imprimisse os caracteres { e }.
+Para isso, usei condicionais dentro do while que verificavam cada caractere antes de imprimir,
+aplicando o conceito de curto-circuito: se o primeiro teste falha, não preciso testar o segundo.
+Essa modificação me ajudou a entender melhor como condições e saltos funcionam em Assembly.
+
+Questão 2
+O exercício pedia para calcular os quadrados dos números de 1 a 10 sem usar arrays globais.
+Eu fiz isso usando uma variável local i, inicializando em 1 e incrementando até 10 dentro de um while.
+Cada quadrado foi calculado multiplicando i*i e impresso usando printf.
+Usei while em vez de for porque achei mais fácil traduzir para Assembly depois.
+
+Questão 3
+O array nums[4] precisava ser somado. O código em C usava for,
+mas eu troquei para while para facilitar a tradução para Assembly.
+Criei uma variável s para acumular a soma e usei um índice i para percorrer cada elemento.
+No Assembly, calculei o endereço de cada elemento com end(a[i]) = end(a) + i * sizeof(int)
+e adicionei ao registrador que armazenava a soma.
