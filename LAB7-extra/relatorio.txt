@@ -1,0 +1,12 @@
+
+Primeiro, criei os três arquivos em C (dados.h, dados.c e main.c) e testei a compilação
+com gcc -o prog dados.c main.c. O programa percorre um array de estruturas e encontra
+o maior valor de ci entre os elementos que têm cc diferente de zero. O resultado foi 15
+
+Depois, traduzi apenas o módulo main.c para Assembly,
+criando o arquivo mainasm.s. Mantive a mesma lógica, usando um loop while  e acessando o array dados como uma
+referência externa com .extern. Para calcular o próximo elemento,
+avancei o ponteiro com 8 bytes.
+
+Por fim, compilei misturando C e Assembly com gcc -o prog2 dados.c mainasm.s 
+e a saída continuou 15, confirmando que a tradução estava correta.
