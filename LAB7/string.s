@@ -12,6 +12,14 @@ int main(void) {
 }
 */
 
+/*
+DICIONÁRIO
+S2      Array global 
+Sf      String
+Sf2      "\n"
+%r12    *pc
+*/
+
 .data
 S2:     .byte 65,108,111,32,123,103,97,108,101,114,97,125,33,0
 Sf:     .string "%c"   /* string de formato para printf */
@@ -30,13 +38,13 @@ main:
     movq    %r12, -16(%rbp)
 /********************************************************/
 
-    movq    $S2, %r12      /* r12 = &S2 */
+    movq    $S2, %r12 
 
 L1:
     cmpb    $0, (%r12)
     je      L2
 
-    movsbl  (%r12), %eax   /* eax = *r12 (extend byte) */
+    movsbl  (%r12), %eax 
     cmpb    $123, %al
     je      SKIP
     cmpb    $125, %al

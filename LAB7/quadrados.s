@@ -13,6 +13,15 @@ int main(void) {
 }
 */
 
+/*
+DICIONÁRIO
+   %ebx   i         
+   %eax   i*i  
+   %rbp 
+   %rsp  
+
+*/
+
 .data
 Sf:     .string "%d\n"
 
@@ -21,19 +30,19 @@ Sf:     .string "%d\n"
 main:
 
 /********************************************************/
-/* prologo - não mexer */
-    pushq   %rbp
-    movq    %rsp, %rbp
-    subq    $16, %rsp
-    movq    %rbx, -8(%rbp)
-    movq    %r12, -16(%rbp)
+/* mantenha este trecho aqui e nao mexa - prologo !!!   */
+	pushq	%rbp
+	movq	%rsp, %rbp
+	subq	$16, %rsp
+	movq	%rbx, -8(%rbp)
+	movq	%r12, -16(%rbp)
 /********************************************************/
 
-    movl    $1, %ebx        /* i = 1 */
+    movl    $1, %ebx      
 
 WHILE_LOOP:
-    cmpl    $10, %ebx       /* i <= 10 ? */
-    jg      END_WHILE       /* se i > 10, sai do loop */
+    cmpl    $10, %ebx       
+    jg      END_WHILE       /*  i > 10*/
 
     movl    %ebx, %eax
     imull   %eax, %eax      /* eax = i*i */
@@ -46,15 +55,15 @@ WHILE_LOOP:
       call  printf
     /*************************************************************/
 
-    addl    $1, %ebx        /* i++ */
+    addl    $1, %ebx
     jmp WHILE_LOOP
 
 END_WHILE:
-/**************************************************************/
-/* finalizacao - não mexer */
-    movq    $0, %rax
-    movq    -16(%rbp), %r12
-    movq    -8(%rbp), %rbx
-    leave
-    ret
+/***************************************************************/
+/* mantenha este trecho aqui e nao mexa - finalizacao!!!!      */
+  movq  $0, %rax  /* rax = 0  (valor de retorno) */
+  movq    -16(%rbp), %r12 /* recupera r12 */
+  movq    -8(%rbp), %rbx  /* recupera rbx */
+  leave
+  ret      
 /***************************************************************/

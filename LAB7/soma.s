@@ -13,6 +13,16 @@ int main(void) {
 }
 */
 
+/*
+DICIONÁRIO
+   %ebx    i      
+   %r12d   s        
+   %rcx   deslocamento em bytes
+   %eax   valor lido em nums[i]
+   nums   array global
+   Sf     string
+*/
+
 .data
 nums:   .long 65, -105, 111, 34
 Sf:     .string "soma = %d\n"
@@ -30,19 +40,19 @@ main:
     movq    %r12, -16(%rbp)
 /********************************************************/
 
-    movl    $0, %ebx        /* i = 0 */
-    movl    $0, %r12d       /* s = 0 */
+    movl    $0, %ebx       
+    movl    $0, %r12d       
 
 WHILE:
-    cmpl    $4, %ebx        /* enquanto i < 4 */
+    cmpl    $4, %ebx        /* i < 4 */
     jge     END
 
     movslq  %ebx, %rcx      /* rcx = i */
     imulq   $4, %rcx        /* rcx = i * sizeof(int) */
     movl    nums(%rcx), %eax
-    addl    %eax, %r12d     /* s += nums[i] */
+    addl    %eax, %r12d     
 
-    addl    $1, %ebx         /* i++ */
+    addl    $1, %ebx  
     jmp WHILE
 
 END:
