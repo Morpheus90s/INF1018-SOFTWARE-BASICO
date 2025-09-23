@@ -9,9 +9,15 @@ int main() {
 }
 */
 
+/*
+	DICIONÁRIO 
+	%ebx    i              
+	%eax   *p
+*/
+
 .data
 nums:	.int	10, -21, -30, 45
-Sf:	.string "%d\n"	# string de formato para printf
+Sf:	.string "%d\n"
 
 .text
 .globl	main
@@ -26,17 +32,17 @@ main:
 	movq	%r12, -16(%rbp)
 /********************************************************/
 
-	movl	$0, %ebx	/* i = 0; */
-	movq	$nums, %r12	/* p = &nums; */
+	movl	$0, %ebx	
+	movq	$nums, %r12	
 
 L1:
-	cmpl	$4, %ebx	/* if (i == 4) ? */
-	je	L2		/* goto L2 */
+	cmpl	$4, %ebx	/* if */
+	je	L2	
 
-	movl	(%r12), %eax	/* eax = *p; */
+	movl	(%r12), %eax
 
-	testl	$1, %eax	/* testa se o bit menos significativo de %eax é 1 (ímpar) */
-	jne	L1_continua	/* se for ímpar, pula para o próximo loop */
+	testl	$1, %eax	
+	jne	L1_continua
 
 /*************************************************************/
 /* este trecho imprime o valor de %eax (estraga %eax)  */
@@ -46,9 +52,9 @@ L1:
 /*************************************************************/
 
 L1_continua:
-	addl	$1, %ebx	/* i++; */
-	addq	$4, %r12	/* p++; */
-	jmp	L1		/* goto L1; */
+	addl	$1, %ebx
+	addq	$4, %r12
+	jmp	L1	
 
 L2:	
 /***************************************************************/

@@ -6,11 +6,18 @@ int main() {
     printf("%d\n", *p);
   return 0;
 }
+
+*/
+
+/*
+	DICIONÁRIO
+	ebx   i         
+	eax  *p    
 */
 
 .data
 nums:	.byte	10, -21, -30, 45
-Sf:	.string "%d\n"	# string de formato para printf
+Sf:	.string "%d\n"
 
 .text
 .globl	main
@@ -25,14 +32,14 @@ main:
 	movq	%r12, -16(%rbp)
 /********************************************************/
 
-	movl	$0, %ebx	/* i = 0; */
-	movq	$nums, %r12	/* p = &nums; */
+	movl	$0, %ebx
+	movq	$nums, %r12	
 
 L1:
-	cmpl	$4, %ebx	/* if (i == 4) ? */
-	je	L2		/* goto L2 */
+	cmpl	$4, %ebx	/* if */
+	je	L2		
 
-	movsbl	(%r12), %eax	/* estende o byte de *p para um inteiro de 32 bits em %eax */
+	movsbl	(%r12), %eax	/* estende o byte do *p */
 
 /*************************************************************/
 /* este trecho imprime o valor de %eax (estraga %eax)  */
@@ -41,9 +48,9 @@ L1:
 	call	printf		/* chama a funcao da biblioteca */
 /*************************************************************/
 
-	addl	$1, %ebx	/* i++; */
-	addq	$1, %r12	/* p++; - avança 1 byte por elemento */
-	jmp	L1		/* goto L1; */
+	addl	$1, %ebx	
+	addq	$1, %r12	
+	jmp	L1		
 
 L2:	
 /***************************************************************/
