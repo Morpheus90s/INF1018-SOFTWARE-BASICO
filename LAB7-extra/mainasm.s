@@ -1,65 +1,73 @@
+/* DICIONÁRIO 
+    ebx    i      
+    r12    *p       
+    r13d   max   
+    eax   = temporário
+    dados  = array de structs 
+*/
 
-    .data
-Sf:     .string "%d\n"       # Formato para printf
+.data
+Sf:     .string "%d\n"       /* formato printf para inteiro */
+Sf2:    .string "\n"         /* segunda string de formato para printf */
 
-    .text
-    .globl main
-    .extern dados            # dados é definido em dados.c
+.text
+.globl main
+.extern dados        
 
 main:
+
 /********************************************************/
-/* mantenha este trecho aqui e nao mexa - prologo !!!   */
-	pushq	%rbp
-	movq	%rsp, %rbp
-	subq	$16, %rsp
-	movq	%rbx, -8(%rbp)
-	movq	%r12, -16(%rbp)
+/* mantenha este trecho aqui e nao mexa - prologo !!!   */
+  pushq   %rbp
+  movq    %rsp, %rbp
+  subq    $16, %rsp
+  movq    %rbx, -8(%rbp)  /* guarda rbx */
+  movq    %r12, -16(%rbp) /* guarda r12 */
 /********************************************************/
 
-    movl    $0, %ebx         # i = 0
-    movq    $dados, %r12     # p = &dados
-    movl    $0, %r13d        # max = 0
+    movl    $0, %ebx           
+    movq    $dados, %r12        /* p = &dados */
+    movl    $0, %r13d         
 
 L1:
-    cmpl    $3, %ebx         # if (i < 3)?
-    jge     L2               # se i >= 3, sai
+    cmpl    $3, %ebx            /* while */
+    jge     L2                 
 
-    movzbl  (%r12), %eax     # eax = p->cc (char -> int)
-    testl   %eax, %eax       # cc != 0 ?
-    je      NEXT
+    movzbl  (%r12), %eax        /* eax = p->cc*/
+    testl   %eax, %eax          /* cc != 0 */
+    je      NEXT               
 
-    movl    4(%r12), %eax    # eax = p->ci
-    cmpl    %r13d, %eax      # ci > max ?
-    jle     NEXT
-    movl    %eax, %r13d      # max = p->ci
+    movl    4(%r12), %eax      
+    cmpl    %r13d, %eax       
+    jle     NEXT                
+    movl    %eax, %r13d        
 
 NEXT:
-    addq    $8, %r12         # p++ (struct tem 1+3(pad)+4 = 8 bytes)
-    addl    $1, %ebx         # i++
+    addq    $8, %r12           
+    addl    $1, %ebx           
     jmp     L1
 
 L2:
-/********************************************************/
-/* Impressão do resultado                               */
-    movq    $Sf, %rdi        # primeiro parâmetro
-    movl    %r13d, %esi      # segundo parâmetro
-    movl    $0, %eax
-    call    printf
-/********************************************************/
-
 /*************************************************************/
-/* este trecho imprime o valor de %eax (estraga %eax)  */
-	movq	$Sf, %rdi	/* primeiro parametro (ponteiro)*/
-	movl	%eax, %esi	/* segundo parametro  (inteiro) */
-	call	printf		/* chama a funcao da biblioteca */
+/* este trecho imprime o valor de %eax (estraga %eax)       */
+  movq    $Sf, %rdi            /* primeiro parametro (ponteiro)*/
+  movl    %r13d, %esi          /* segundo parametro (inteiro) */
+  movl  $0, %eax
+  call  printf                 /* chama a funcao da biblioteca */
 /*************************************************************/
 
-/********************************************************/
-/* Finalização - NÃO ALTERAR                            */
-    movq    $0, %rax
-    movq    -24(%rbp), %r13
-    movq    -16(%rbp), %r12
-    movq    -8(%rbp), %rbx
-    leave
-    ret
-/********************************************************/
+/*************************************************************/
+/* este trecho imprime o \n (estraga %eax)                  */
+  movq    $Sf2, %rdi           /* primeiro parametro (ponteiro)*/
+  movl  $0, %eax
+  call  printf                 /* chama a funcao da biblioteca */
+/*************************************************************/
+
+/***************************************************************/
+/* mantenha este trecho aqui e nao mexa - finalizacao!!!!      */
+  movq  $0, %rax               /* rax = 0  (valor de retorno) */
+  movq  -16(%rbp), %r12        /* recupera r12 */
+  movq  -8(%rbp), %rbx         /* recupera rbx */
+  leave
+  ret      
+/***************************************************************/
