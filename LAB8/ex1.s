@@ -1,5 +1,4 @@
 /*
-   Programa C original:
    #include <stdlib.h>
    int main() {
        system("ls -ls");
@@ -8,7 +7,7 @@
 */
 
 .data
-s1:     .string "ls -ls"     /* string passada para system */
+s1:     .string "ls -ls"    
 
 .text
 .globl main
@@ -22,9 +21,9 @@ main:
     movq    %r12, -16(%rbp)    /* guarda r12 */
 /********************************************************/
 
-    movq    $s1, %rdi          /* 1º parâmetro: endereço da string */
+    movq    $s1, %rdi          
     movl    $0, %eax
-    call    system             /* chama system("ls -ls") */
+    call    system             
 
 /***************************************************************/
 /* mantenha este trecho aqui e nao mexa - finalizacao!!!!      */

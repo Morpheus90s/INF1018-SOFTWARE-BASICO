@@ -1,5 +1,4 @@
 /*
-   Programa C original:
    #include <stdio.h>
    #define LIM 1
 
@@ -23,7 +22,7 @@
    %r12 *p
    %rdi  printf
    %rsi  argumento da função
-   %rax retorno de funções
+   %rax  retorno de funções
 */
 
 .data
