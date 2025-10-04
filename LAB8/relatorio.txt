@@ -1,0 +1,25 @@
+Relatório 8
+
+Nessa atividade o objetivo foi entender como chamadas de funções em C se traduzem para Assembly,
+tanto em um programa simples quanto em um programa com dois módulos.
+
+Primeiro, peguei um código em C bem básico, onde a função main chama system("ls -ls").
+A ideia era converter esse programa para Assembly, criando o arquivo ex1.s.
+Nesse processo, precisei cuidar do prólogo e do epílogo da função,
+passar o parâmetro certo para system e garantir o retorno correto.
+O resultado final foi um código Assembly funcional, que reproduz exatamente o comportamento do programa em C.
+
+Depois, passei para o segundo exercício. O código em C tinha dois arquivos: filtro.c e main.c.
+O filtro verifica se um número é menor que um limite e retorna 0 ou o próprio número.
+Já a main percorre um vetor de inteiros, chamando filtro e imprimindo os resultados.
+A tarefa foi reescrever apenas a função main em Assembly, no arquivo mainasm.s.
+
+Na tradução, usei os registradores conforme pedido: %rbx para a variável i e %r12
+para o ponteiro que percorre o vetor.
+Também tomei cuidado com a preservação desses registradores durante as chamadas de função.
+A lógica do laço for, a chamada para filtro e depois para printf foram mantidas,
+garantindo que a versão em Assembly tivesse a mesma saída que a versão em C.
+
+No final, consegui executar os dois programas (ex1 e ex2asm) e ver que eles funcionam da mesma forma que os originais em C.
+A atividade ajudou a visualizar como o compilador organiza chamadas de funções,
+passagem de parâmetros e preservação de registradores.
