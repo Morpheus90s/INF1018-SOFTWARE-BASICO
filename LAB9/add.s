@@ -5,9 +5,9 @@ int add (int a, int b, int c) {
 */
 
 /* DICIONÁRIO
-   %edi   a  1º argumento
-   %esi   b  2º argumento
-   %edx   c  3º argumento
+   %edi   a  1º arg
+   %esi   b  2º arg
+   %edx   c  3º arg
    %eax   retorno
 */
 
