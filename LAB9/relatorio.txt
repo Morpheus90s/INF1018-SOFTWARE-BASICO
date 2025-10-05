@@ -1,0 +1,21 @@
+Relatório 9
+
+O objetivo foi entender como as funções escritas em C são convertidas para assembly e
+como o computador realmente executa cada instrução. Para isso, eu traduzi algumas funções C para assembly.
+
+A primeira função que foi a add, que soma três números inteiros.
+Escrevi a função em C e depois traduzi para assembly no arquivo add.s.
+Em seguida, fiz um arquivo main.c com a função principal que chama a add e imprime o resultado na tela.
+Compilei os dois arquivos juntos usando o comando gcc -Wall -no-pie -o prog add.s main.c.
+Quando executei o programa, ele mostrou o valor 6 e o código em assembly funcionava igual ao código em C.
+
+Depois, passei para a função fat, que calcula o fatorial de um número de forma recursiva.
+Essa parte foi mais dificil porque deu para ver como a recursão funciona internamente,
+com cada chamada empilhando os valores anteriores até chegar no caso base.
+Fiz a tradução da função para assembly e depois criei um main em C para testar.
+rodei o programa e mostrou que a recursão foi implementada certa.
+
+Por fim, fiz com a função foo, que usa vetores e faz operações dentro de um laço for.
+Essa parte foi mais complicada, porque precisei entender como acessar os elementos do array em assembly,
+usando endereços de memória. A função somava os valores do vetor e, quando encontrava um zero,
+substituía esse elemento pela soma acumulada até aquele ponto.
