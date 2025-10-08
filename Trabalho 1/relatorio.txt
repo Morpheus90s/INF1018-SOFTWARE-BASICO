@@ -1,0 +1,31 @@
+Relatório - INF1018 - Software Básico (2025.2)
+Trabalho 1 - Inteiros Grandes
+
+Integrantes:
+Pedro Augusto Beserra da Silva - 2321374 - Turma B
+
+Funções implementadas e testadas:
+- big_val
+- big_comp2
+- big_sum
+- big_sub
+- big_mul
+- big_shl
+- big_shr
+- big_sar
+
+Estratégia de testes:
+Foram criados testes simples no arquivo testebigint.c, verificando:
+- Conversão de valores positivos e negativos
+- Operações de complemento a 2
+- Soma, subtração e multiplicação com valores pequenos
+- Deslocamentos lógicos e aritméticos
+
+Casos testados:
+0, 1, -1, 2, -2, 5, 7, 10, 4, 6
+
+O programa foi compilado com:
+gcc -Wall -o testebigint bigint.c testebigint.c
+
+Status:
+Todas as funções implementadas e funcionando corretamente em testes básicos.
