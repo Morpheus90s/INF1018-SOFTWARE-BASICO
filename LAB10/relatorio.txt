@@ -1,0 +1,17 @@
+Relatório 10
+
+Neste laboratório, o objetivo foi compreender como funções que utilizam ponteiros,
+vetores e structs são traduzidas e executadas em linguagem assembly.
+A proposta permitiu observar de forma prática como o processador acessa endereços de memória e realiza chamadas de função.
+
+Consegui implementar e testar corretamente a primeira parte,
+correspondente à função add, que percorre uma lista ligada somando os valores de cada nó.
+No código em assembly, foi necessário acessar manualmente os campos
+da struct e utilizar um loop para somar até que o ponteiro se tornasse nulo.
+O teste apresentou o resultado esperado, confirmando o funcionamento correto da tradução.
+
+As demais funções (add2, boo e map2) foram implementadas,
+mas apresentaram erro de “Segmentation fault (core dumped)” durante a execução,
+mesmo após revisar cuidadosamente a tradução para assembly.
+Esses erros indicam que houve algum problema de acesso indevido à memória,
+provavelmente relacionado à passagem de ponteiros ou endereços entre as funções.
