@@ -1,0 +1,13 @@
+Relatorio 11
+
+Para novonum escrevi a função que pede ao usuário um número,
+salva esse número em uma variável local na pilha e o retorna.
+No Assembly aloquei espaço no stack frame para a variável minhalocal,
+chamei printf e scanf seguindo a convenção System V e retornei o valor em %eax.
+Testei com a main do enunciado e o programa executou corretamente, retornando o valor lido.
+
+Para bemboba traduzi a função que cria um array local,
+inicializa cada posição com o valor do parâmetro num e chama addl
+para somar os elementos. Em Assembly aloquei o array local na pilha,
+usei %rbx como ponteiro para percorrer o array e
+usei call addl ao final. O teste comparativo devolveu 21 para bemboba.
